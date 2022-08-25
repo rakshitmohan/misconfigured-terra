@@ -49,7 +49,7 @@ jobs:
      - name: curl
        uses: wei/curl@v1
        with:
-        args: --location --request POST 'https://rakshitmohan99.atlassian.net/rest/api/3/issue/${{ steps.create.outputs.issue }}/attachments' -u 'rakshitmohan99@gmail.com:${{ secrets.JIRA }}' -H 'X-Atlassian-Token:no-check' --form 'file=@"results.csv"'
+        args: --location --request POST 'https://rakshitmohan99.atlassian.net/rest/api/3/issue/${{ steps.search.outputs.issue }}/attachments' -u 'rakshitmohan99@gmail.com:${{ secrets.JIRA }}' -H 'X-Atlassian-Token:no-check' --form 'file=@"results.csv"'
 
 
         
