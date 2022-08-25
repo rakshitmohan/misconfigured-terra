@@ -18,8 +18,6 @@ jobs:
      - name: Getting results
        run: |
           cat results.json
-     - name: Checkout
-       uses: actions/checkout@master
 
      - name: Login
        uses: atlassian/gajira-login@master
