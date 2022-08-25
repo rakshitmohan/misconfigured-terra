@@ -3,10 +3,12 @@ on: [pull_request]
 jobs:
  tfsec_commenter:
    name: tfsec PR commenter
+    
    runs-on: ubuntu-latest
 
    steps:
      - name: Clone repo
+      -name
        uses: actions/checkout@master
 
      - name: tfsec commenter
