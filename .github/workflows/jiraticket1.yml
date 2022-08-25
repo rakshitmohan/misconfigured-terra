@@ -32,13 +32,6 @@ jobs:
       with:
         issue: ${{ steps.create.outputs.issue }}
         transition: "In progress"
-    - uses: mshick/add-pr-comment@v1
-      with:
-          message: |
-             https://rakshitmohan99.atlassian.net/browse/${{ steps.create.outputs.issue }}
-          repo-token: ${{ secrets.TOKEN }}
-          
- 
-
+        
     - name: Log created issue
       run: echo "Issue ${{ steps.create.outputs.issue }} was created"
