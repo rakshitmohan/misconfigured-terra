@@ -13,7 +13,7 @@ jobs:
       env:
         JIRA_BASE_URL: https://rakshitmohan99.atlassian.net
         JIRA_USER_EMAIL: rakshitmohan99@gmail.com
-        JIRA_API_TOKEN: 3QXeTBVp4If9IKgZc9olBF51
+        JIRA_API_TOKEN: jbrrM1vkGZ5Rv1DCcrhB2F82
 
     - name: Create
       id: create
