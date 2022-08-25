@@ -21,7 +21,7 @@ jobs:
       id: search
       uses: tomhjp/gh-action-jira-search@v0.1.0
       with:
-        jql: 'text ~ "https://github.com/rakshitmohan/misconfigured-terra/pull/21" order by created DESC'
+        jql: 'text ~ "https://github.com/${{ github.repository }}/pull/${{github.event.number}}" order by created DESC'
 
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
