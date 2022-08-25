@@ -1,4 +1,4 @@
-name: seach Jira
+name: Closing Jira
 on:
   pull_request:
     types: [closed]
