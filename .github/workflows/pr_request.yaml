@@ -50,6 +50,11 @@ jobs:
           Security Scan is in progress hope to get the results soon. Jira ticket for the same is:
           https://rakshitmohan99.atlassian.net/browse/${{ steps.create.outputs.issue }}
           Please make sure you have followed our contributing guidelines. We will review it as soon as possible
+     - name: Adding attachment
+       run: | 
+           curl  --location --request POST 'https://rakshitmohan99.atlassian.net/rest/api/3/issue/${{ steps.create.outputs.issue }}/attachments' -u 'rakshitmohan99@gmail.com:VU4jRTN7CBV5cee5g8n23A6C' -H 'X-Atlassian-Token:no-check' --form 'file=@"results.csv"'
+
+      
  
      - name: curl
        uses: wei/curl@v1
