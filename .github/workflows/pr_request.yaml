@@ -12,5 +12,45 @@ jobs:
      - name: tfsec commenter
        uses: aquasecurity/tfsec-pr-commenter-action@v1.2.0
        with:
-         tfsec_formats: sarif,csv
+         soft_fail_commenter: true
          github_token: ${{ secrets.GITHUB_TOKEN }}
+     - name: Getting results
+       run: |
+          cat results.json
+     - name: Checkout
+       uses: actions/checkout@master
+
+     - name: Login
+       uses: atlassian/gajira-login@master
+       env:
+        JIRA_BASE_URL: https://rakshitmohan99.atlassian.net
+        JIRA_USER_EMAIL: rakshitmohan99@gmail.com
+        JIRA_API_TOKEN: VU4jRTN7CBV5cee5g8n23A6C
+
+     - name: Create
+       id: create
+       uses: atlassian/gajira-create@master
+       with:
+        project: TEST
+        issuetype: Task
+        summary: |
+          Terraform Security Scan ${{ github.repository }} || Pull Request No: ${{github.event.number}} 
+        description: |
+          Security Scan for terraform pull request https://github.com/${{ github.repository }}/pull/${{github.event.number}}
+        fields: '{"assignee": {"name":"rakshitmohan99@gmail.com"}}'
+        
+     - name: Auto Comment
+       uses: wow-actions/auto-comment@v1
+       with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        pullRequestOpened: >
+          👋 @{{ author }}
+          Thank you for raising your pull request.
+          Security Scan is in progress hope to get the results soon. Jira ticket for the same is:
+          https://rakshitmohan99.atlassian.net/browse/${{ steps.create.outputs.issue }}
+          Please make sure you have followed our contributing guidelines. We will review it as soon as possible
+ 
+     - name: curl
+       uses: wei/curl@v1
+       with:
+        args: --location --request POST 'https://rakshitmohan99.atlassian.net/rest/api/3/issue/TEST-12/attachments' -u 'rakshitmohan99@gmail.com:VU4jRTN7CBV5cee5g8n23A6C' -H 'X-Atlassian-Token:no-check' --form 'file=@"test.csv"'
