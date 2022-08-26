@@ -22,9 +22,15 @@ jobs:
       uses: tomhjp/gh-action-jira-search@v0.1.0
       with:
         jql: 'text ~ "https://github.com/${{ github.repository }}/pull/${{github.event.number}}" order by created DESC'
+    - name: Comment on issue
+      uses: atlassian/gajira-comment@master
+      with:
+       issue: ${{ steps.search.outputs.issue }}
+        comment:Accepted by POD leaders
 
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
+    
 
     - name: Transition issue
       uses: atlassian/gajira-transition@master
