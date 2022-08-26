@@ -16,6 +16,13 @@ jobs:
         JIRA_BASE_URL: https://rakshitmohan99.atlassian.net
         JIRA_USER_EMAIL: rakshitmohan99@gmail.com
         JIRA_API_TOKEN: ${{ secrets.JIRA }}
+    - name: Auto Comment
+      uses: wow-actions/auto-comment@v1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        pullRequestClosed: >
+          👋 @{{ author }} I closed the pull request
+
 
     - name: Search
       id: search
@@ -26,7 +33,7 @@ jobs:
       uses: atlassian/gajira-comment@master
       with:
        issue: ${{ steps.search.outputs.issue }}
-       comment: "${{ github.event.pusher.name }} pushed to repository: @{{ author }}
+       comment: "${{ github.event.pusher.name }} pushed to repository
 
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
