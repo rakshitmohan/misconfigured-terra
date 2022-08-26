@@ -32,8 +32,8 @@ jobs:
     - name: Comment on issue
       uses: atlassian/gajira-comment@master
       with:
-       issue: ${{ steps.search.outputs.issue }}
-       comment: "${{ github.event.pusher.name }} pushed to repository
+        issue: ${{ steps.search.outputs.issue }}
+        comment: "${{ github.event.pusher.name }} pushed to repository
 
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
