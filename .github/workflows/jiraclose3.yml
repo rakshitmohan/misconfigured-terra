@@ -26,7 +26,7 @@ jobs:
       uses: atlassian/gajira-comment@master
       with:
        issue: ${{ steps.search.outputs.issue }}
-       comment: "${{ github.event.pusher.name }} pushed to repository: ${{ github.event.repository.full_name }}"
+       comment: "${{ github.event.pusher.name }} pushed to repository: @{{ author }}
 
     - name: Log
       run: echo "Found issue ${{ steps.search.outputs.issue }}"
