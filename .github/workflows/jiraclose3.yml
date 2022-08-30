@@ -21,7 +21,7 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         pullRequestClosed: >
-          👋 @{{ author }} I closed the pull request
+          👋 ${{ github.triggering_actor }} I closed the pull request
 
 
  
