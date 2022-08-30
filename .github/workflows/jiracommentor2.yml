@@ -54,7 +54,7 @@ jobs:
      - name: curl
        uses: wei/curl@v1
        with:
-        args: --request PUT  --url 'https://rakshitmohan99.atlassian.net/rest/api/3/issue/${{ steps.search.outputs.issue }}/assignee' --header 'Accept:application/json' --header 'Content-Type:application/json' --data '{ "accountId":"62e017c22fe585febb3bb6ce" }'
+        args: --request PUT  --url 'https://rakshitmohan99.atlassian.net/rest/api/3/issue/${{ steps.search.outputs.issue }}/assignee' --header 'Accept:application/json'  --data '{ "accountId":"62e017c22fe585febb3bb6ce" }'
 
         
 
