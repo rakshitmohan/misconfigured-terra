@@ -9,6 +9,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
+    - name: Search
+      id: search
+      uses: tomhjp/gh-action-jira-search@v0.1.0
+      with:
+        jql: 'text ~ "https://github.com/${{ github.repository }}/pull/${{github.event.number}}" order by created DESC'
 
     - name: Login
       uses: atlassian/gajira-login@master
