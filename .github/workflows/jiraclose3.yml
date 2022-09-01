@@ -15,6 +15,9 @@ jobs:
       with:
         jql: 'text ~ "https://github.com/${{ github.repository }}/pull/${{github.event.number}}" order by created DESC'
 
+    - name: Log
+      run: echo "Found issue ${{ steps.search.outputs.issue }}"
+
     - name: Login
       uses: atlassian/gajira-login@master
       env:
